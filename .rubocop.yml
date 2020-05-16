@@ -11,3 +11,6 @@
 
 Style/ClassAndModuleChildren:
   Enabled: true
+
+Layout/FirstHashElementIndentation:
+  Enabled: false

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ['Dmitry Ruban']
   spec.email   = ['dkruban@gmail.com']
 
-  spec.summary     = 'The simple DI container'
-  spec.description = 'The simple DI container'
+  spec.summary     = 'Simple DI container'
+  spec.description = 'Simple DI container'
   spec.homepage    = 'https://github.com/RuBAN-GT/justdi'
   spec.license     = 'MIT'
 
