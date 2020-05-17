@@ -31,8 +31,10 @@ module Justdi
     def resolve
       return value if resolved?
 
+      @value = yield self
       @is_resolved = true
-      @value       = yield self
+
+      @value
     end
   end
 end
