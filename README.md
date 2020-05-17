@@ -18,7 +18,7 @@ bundle install
 
 Or install it yourself as:
 
-```
+```bash
 gem install justdi
 ```
 
@@ -32,7 +32,36 @@ gem install justdi
 
 ## Usage
 
-TODO: Write usage instructions here
+### Container as register
+
+```ruby
+container = Justdi::Container.new
+
+container.bind(:orm).use_class(CustomOrm)
+container.get(:orm) # => #<CustomOrm:0x0000000000000000>
+```
+
+### IOC approach
+
+```ruby
+class Repository
+  extend Justdi::Injectable
+  dependency :orm
+
+  attr_reader :orm
+
+  def initialize(orm:)
+    @orm = orm
+  end
+
+  def last(limit = 10)
+    orm.find(limit: limit, order: [:updated_at, :DESC])
+  end
+end
+
+repo = container.resolve(Repository) # => #<Repository:0x0000000000000000>
+repo.last
+```
 
 ## Development
 

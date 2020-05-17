@@ -8,6 +8,8 @@ module Justdi
       # @param klass [Class]
       # @param container [Justdi::Container]
       # @return [Class]
+      #
+      # @raise [Justdi::NoDependencyError]
       def call(klass, container)
         return klass.new unless klass.is_a? Justdi::Injectable
 
@@ -16,7 +18,7 @@ module Justdi
 
           hash[token] = container.get(token)
         end
-        klass.new klass_args
+        klass.new(**klass_args)
       end
     end
   end

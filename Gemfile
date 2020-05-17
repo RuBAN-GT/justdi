@@ -11,3 +11,8 @@ gem 'faker', '~> 2.11.0'
 gem 'rspec', '~> 3.0'
 
 gem 'rubocop', '~> 0.82.0', require: false
+
+group :development, optional: true do
+  gem 'debase', require: false
+  gem 'ruby-debug-ide', require: false
+end

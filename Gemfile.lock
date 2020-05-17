@@ -8,6 +8,9 @@ GEM
   specs:
     ast (2.4.0)
     concurrent-ruby (1.1.6)
+    debase (0.2.4.1)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.9)
     diff-lcs (1.3)
     faker (2.11.0)
       i18n (>= 1.6, < 2)
@@ -41,6 +44,8 @@ GEM
       rexml
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
+    ruby-debug-ide (0.7.2)
+      rake (>= 0.8.1)
     ruby-progressbar (1.10.1)
     unicode-display_width (1.7.0)
 
@@ -48,11 +53,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  debase
   faker (~> 2.11.0)
   justdi!
   rake (~> 12.0)
   rspec (~> 3.0)
   rubocop (~> 0.82.0)
+  ruby-debug-ide
 
 BUNDLED WITH
    2.1.4
