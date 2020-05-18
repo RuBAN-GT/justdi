@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Justdi
-  # Handler of registered values
+  # Utilitary handler registering value definitions
   class RegisterHandler
     attr_reader :callback
 
@@ -9,21 +9,30 @@ module Justdi
       @callback = block
     end
 
-    def use_class(value)
+    # Push class definition into container
+    #
+    # @param klass [Class]
+    def use_class(klass)
       callback.call(
-        Definition.new({ type: Definition::CLASS, value: value })
+        Definition.new(type: Definition::CLASS, value: klass)
       )
     end
 
+    # Push a static definition into container
+    #
+    # @param value [*]
     def use_value(value)
       callback.call(
-        Definition.new({ type: Definition::STATIC, value: value })
+        Definition.new(type: Definition::STATIC, value: value)
       )
     end
 
+    # Push a factory definition into container
+    #
+    # @param factory [Proc]
     def use_factory(factory)
       callback.call(
-        Definition.new({ type: Definition::FACTORY, value: factory })
+        Definition.new(type: Definition::FACTORY, value: factory)
       )
     end
   end

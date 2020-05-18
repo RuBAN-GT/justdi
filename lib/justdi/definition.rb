@@ -9,25 +9,32 @@ module Justdi
 
     attr_reader :type, :pure_value, :value
 
-    def initialize(params)
-      @type        = params[:type]
-      @pure_value  = params[:value]
+    # @param type [Symbol]
+    # @param value [*]
+    def initialize(type: STATIC, value:)
+      @type        = type
+      @pure_value  = value
       @is_resolved = false
     end
 
+    # Definition value is resolved
+    #
+    # @return [Boolean]
     def resolved?
       @is_resolved
     end
 
     # Get resolved value using generator
     #
-    # @yield [self]
+    # @yield [self] generating resolved value
     # @return [*]
     def resolve
       return value if resolved?
 
+      @value = yield self
       @is_resolved = true
-      @value       = yield self
+
+      @value
     end
   end
 end

@@ -37,8 +37,8 @@ module Justdi
     # @param definition [Hash]
     # @option definition [Symbol] :type
     # @option definition [*] :value
-    def register(token, definition)
-      store.set token, Justdi::Definition.new(definition)
+    def register(token, **definition)
+      store.set token, Justdi::Definition.new(**definition)
     end
 
     # Check existence of dependency
@@ -60,7 +60,7 @@ module Justdi
     # Resolve dependency
     #
     # @param klass [Class]
-    # @return [*]
+    # @return [Object]
     def resolve(klass)
       self.class.resolver.class_value klass, self
     end

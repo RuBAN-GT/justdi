@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Justdi
+  # Resolver of any factories
   module FactoryResolver
     class << self
       # Build value from factory
