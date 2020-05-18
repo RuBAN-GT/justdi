@@ -37,7 +37,7 @@ module Justdi
     # @param definition [Hash]
     # @option definition [Symbol] :type
     # @option definition [*] :value
-    def register(token, definition)
+    def register(token, **definition)
       store.set token, Justdi::Definition.new(**definition)
     end
 

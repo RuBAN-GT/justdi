@@ -58,6 +58,7 @@ DEPENDENCIES
   justdi!
   rake (~> 12.0)
   rspec (~> 3.0)
+  rspec-mocks (~> 3.9.1)
   rubocop (~> 0.82.0)
   ruby-debug-ide
 

@@ -11,7 +11,7 @@ module Justdi
 
     # @param type [Symbol]
     # @param value [*]
-    def initialize(type:, value:)
+    def initialize(type: STATIC, value:)
       @type        = type
       @pure_value  = value
       @is_resolved = false

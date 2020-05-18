@@ -24,7 +24,6 @@ gem install justdi
 
 ## TODO
 
-* [ ] Specs
 * [ ] Doc
 * [ ] Merge containers
 * [ ] Thread-safe structures

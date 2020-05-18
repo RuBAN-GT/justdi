@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Justdi
+  # Builder of any classes as pure or injectables
   module ClassResolver
     class << self
       # Build class by resolving all dependencies

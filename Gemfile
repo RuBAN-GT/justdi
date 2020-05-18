@@ -9,6 +9,7 @@ gem 'rake', '~> 12.0'
 
 gem 'faker', '~> 2.11.0'
 gem 'rspec', '~> 3.0'
+gem 'rspec-mocks', '~> 3.9.1'
 
 gem 'rubocop', '~> 0.82.0', require: false
 
