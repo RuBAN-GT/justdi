@@ -30,7 +30,9 @@ module Justdi
     # Push a factory definition into container
     #
     # @param factory [Proc]
-    def use_factory(factory)
+    # @param block [Proc]
+    def use_factory(factory = nil, &block)
+      factory = block if block_given?
       callback.call(
         Definition.new(type: Definition::FACTORY, value: factory)
       )
