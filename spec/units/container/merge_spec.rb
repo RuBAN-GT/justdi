@@ -11,7 +11,7 @@ RSpec.describe Justdi::Container do
     it 'merges two containers' do
       container_a = generate_container
       container_b = generate_container.tap do |c|
-        c.bind(:b).use_value(static_value)
+        c.register(:b).use_value(static_value)
       end
 
       container_a.merge(container_b)
@@ -20,10 +20,10 @@ RSpec.describe Justdi::Container do
 
     it 'overwrites previous values' do
       container_a = generate_container.tap do |c|
-        c.bind(:a).use_value(42)
+        c.register(:a).use_value(42)
       end
       container_b = generate_container.tap do |c|
-        c.bind(:a).use_value(static_value)
+        c.register(:a).use_value(static_value)
       end
 
       container_a.merge(container_b)

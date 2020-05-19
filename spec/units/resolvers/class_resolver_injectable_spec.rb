@@ -15,7 +15,7 @@ RSpec.describe Justdi::ClassResolver do
         end
 
         expect(Repository).to receive(:new) { |orm:| expect(orm).to be_instance_of(Orm) }
-        container = generate_container.tap { |c| c.bind(:orm).use_class(Orm) }
+        container = generate_container.tap { |c| c.register(:orm).use_class(Orm) }
         described_class.call(Repository, container)
       end
 
@@ -27,7 +27,7 @@ RSpec.describe Justdi::ClassResolver do
         end
 
         expect(Repository).to receive(:new) { |orm:| expect(orm).to be_instance_of(Orm) }
-        container = generate_container.tap { |c| c.bind(:orm).use_class(Orm) }
+        container = generate_container.tap { |c| c.register(:orm).use_class(Orm) }
         described_class.call(Repository, container)
       end
 
@@ -38,7 +38,7 @@ RSpec.describe Justdi::ClassResolver do
           dependency :orm, destination: :class_method
         end
 
-        container  = generate_container.tap { |c| c.bind(:orm).use_class(Orm) }
+        container  = generate_container.tap { |c| c.register(:orm).use_class(Orm) }
         repository = described_class.call(Repository, container)
 
         expect(repository).to be_is_a(Repository)
@@ -54,7 +54,7 @@ RSpec.describe Justdi::ClassResolver do
           dependency :orm, destination: :method
         end
 
-        container  = generate_container.tap { |c| c.bind(:orm).use_class(Orm) }
+        container  = generate_container.tap { |c| c.register(:orm).use_class(Orm) }
         repository = described_class.call(Repository, container)
 
         expect(repository).to be_is_a(Repository)
