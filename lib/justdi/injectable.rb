@@ -7,7 +7,7 @@ module Justdi
     #
     # @param token [String, Symbol, Numeric, Class]
     def dependency(token, **opts)
-      module_dependencies.set(token, opts)
+      module_dependencies.set(token, opts.transform_keys(&:to_sym))
     end
 
     # Get all dependencies

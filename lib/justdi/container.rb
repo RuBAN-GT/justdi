@@ -27,7 +27,7 @@ module Justdi
     #
     # @param token [String, Symbol, Numeric, Class]
     # @return [Justdi::Core::RegisterHandler]
-    def bind(token)
+    def register(token)
       Justdi::RegisterHandler.new { |value| store.set token, value }
     end
 
@@ -37,8 +37,15 @@ module Justdi
     # @param definition [Hash]
     # @option definition [Symbol] :type
     # @option definition [*] :value
-    def register(token, **definition)
+    def set(token, **definition)
       store.set token, Justdi::Definition.new(**definition)
+    end
+
+    # Short definition syntax
+    # @param token [String, Symbol, Numeric, Class]
+    # @param definition [Hash]
+    def []=(token, definition)
+      set(token, **definition)
     end
 
     # Check existence of dependency
@@ -57,12 +64,26 @@ module Justdi
       end
     end
 
+    # Short getting syntax
+    # @param token [String, Symbol, Numeric, Class]
+    # @return [*]
+    def [](token)
+      get(token)
+    end
+
     # Resolve dependency
     #
-    # @param klass [Class]
-    # @return [Object]
+    # @param klass [Class<T>]
+    # @return [T]
     def resolve(klass)
-      self.class.resolver.class_value klass, self
+      self.class.resolver.class_value(klass, self)
+    end
+
+    # Merge container
+    #
+    # @param container [Container]
+    def merge(container)
+      store.merge container.store
     end
   end
 end

@@ -9,7 +9,7 @@ RSpec.describe Justdi::Container do
     it 'register a static/constant value' do
       data      = generate_static_data
       container = generate_container
-      container.register(data[:token], type: Justdi::Definition::STATIC, value: data[:value])
+      container.register(data[:token]).use_value(data[:value])
 
       expect(container.get(data[:token])).to be data[:value]
     end
@@ -17,7 +17,7 @@ RSpec.describe Justdi::Container do
     it 'register a class object' do
       data      = generate_class_data
       container = generate_container
-      container.register(data[:token], type: Justdi::Definition::CLASS, value: data[:value])
+      container.register(data[:token]).use_class(data[:value])
 
       expect(container.get(data[:token])).to be_instance_of data[:value]
     end
@@ -25,11 +25,8 @@ RSpec.describe Justdi::Container do
     it 'register a factory value' do
       data      = generate_static_data
       container = generate_container
-      container.register(
-        data[:token],
-        type: Justdi::Definition::FACTORY,
-        value: ->(_) { data[:value] }
-      )
+      container.register(data[:token]).use_factory ->(_) { data[:value] }
+
       expect(container.get(data[:token])).to be data[:value]
     end
   end

@@ -24,8 +24,8 @@ gem install justdi
 
 ## TODO
 
+* [ ] Container sub-modules
 * [ ] Doc
-* [ ] Merge containers
 * [ ] Thread-safe structures
 * [ ] Self-definition like Angular providers
 
@@ -36,7 +36,7 @@ gem install justdi
 ```ruby
 container = Justdi::Container.new
 
-container.bind(:orm).use_class(CustomOrm)
+container.set(:orm).use_class(CustomOrm)
 container.get(:orm) # => #<CustomOrm:0x0000000000000000>
 ```
 
