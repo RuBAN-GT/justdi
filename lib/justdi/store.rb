@@ -31,7 +31,14 @@ module Justdi
     #
     # @return [Hash]
     def all
-      @store.clone.freeze
+      store.clone.freeze
+    end
+
+    # Merge stores
+    #
+    # @param input [Store]
+    def merge(input)
+      @store = store.merge input.all
     end
 
     protected

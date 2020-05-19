@@ -59,10 +59,17 @@ module Justdi
 
     # Resolve dependency
     #
-    # @param klass [Class]
-    # @return [Object]
+    # @param klass [Class<T>]
+    # @return [T]
     def resolve(klass)
-      self.class.resolver.class_value klass, self
+      self.class.resolver.class_value(klass, self)
+    end
+
+    # Merge container
+    #
+    # @param container [Container]
+    def merge(container)
+      store.merge container.store
     end
   end
 end
