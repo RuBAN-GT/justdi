@@ -27,11 +27,18 @@ module Justdi
       store[key] = value
     end
 
-    # Return all key-value pairs
+    # All key-value pairs
     #
     # @return [Hash]
     def all
       store.clone.freeze
+    end
+
+    # True if the store doesn't have any values
+    #
+    # @return [Boolean]
+    def empty?
+      store.empty?
     end
 
     # Merge stores
