@@ -12,6 +12,6 @@ require 'justdi/resolver'
 require 'justdi/register_handler'
 
 require 'justdi/definition'
-require 'justdi/store'
+require 'justdi/definition_store'
 require 'justdi/injectable'
 require 'justdi/container'

@@ -1,8 +1,14 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 module Justdi
   # Generic container
   class Container
+    extend Forwardable
+
+    def_delegators :store, :register, :has?, :set, :[], :[]=
+
     class << self
       attr_writer :resolver, :store
 
@@ -11,47 +17,10 @@ module Justdi
         @resolver ||= Justdi::Resolver
       end
 
-      # @return [Class<Justdi::Store>]
+      # @return [Class<Justdi::DefinitionStore>]
       def store
-        @store ||= Justdi::Store
+        @store ||= Justdi::DefinitionStore
       end
-    end
-
-    # Container store
-    # @return [Justdi::Store]
-    def store
-      @store ||= self.class.store.new
-    end
-
-    # Register any dependency declaration
-    #
-    # @param token [String, Symbol, Numeric, Class]
-    # @return [Justdi::Core::RegisterHandler]
-    def register(token)
-      Justdi::RegisterHandler.new { |value| store.set token, value }
-    end
-
-    # Register any dependency declaration with alternative syntax
-    #
-    # @param token [String, Symbol, Numeric, Class]
-    # @param definition [Hash]
-    # @option definition [Symbol] :type
-    # @option definition [*] :value
-    def set(token, **definition)
-      store.set token, Justdi::Definition.new(**definition)
-    end
-
-    # Short definition syntax
-    # @param token [String, Symbol, Numeric, Class]
-    # @param definition [Hash]
-    def []=(token, definition)
-      set(token, **definition)
-    end
-
-    # Check existence of dependency
-    # @return [Boolean]
-    def has?(token)
-      store.has? token
     end
 
     # Load and resolve dependency
@@ -64,13 +33,6 @@ module Justdi
       end
     end
 
-    # Short getting syntax
-    # @param token [String, Symbol, Numeric, Class]
-    # @return [*]
-    def [](token)
-      get(token)
-    end
-
     # Resolve dependency
     #
     # @param klass [Class<T>]
@@ -79,11 +41,17 @@ module Justdi
       self.class.resolver.class_value(klass, self)
     end
 
-    # Merge container
+    # Merge containers
     #
     # @param container [Container]
     def merge(container)
       store.merge container.store
+    end
+
+    # Definition store
+    # @return [Justdi::DefinitionStore]
+    def store
+      @store ||= self.class.store.new
     end
   end
 end
