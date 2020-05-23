@@ -7,16 +7,18 @@ module Justdi
   class Container
     extend Forwardable
 
-    def_delegators :store, :register, :has?, :set, :[], :[]=
+    def_delegators :store, :register, :has?, :empty?, :set, :[]=
 
     class << self
       attr_writer :resolver, :store
 
+      # Resolver module
       # @return [Module<Justdi::Resolver>]
       def resolver
         @resolver ||= Justdi::Resolver
       end
 
+      # Class for generation
       # @return [Class<Justdi::DefinitionStore>]
       def store
         @store ||= Justdi::DefinitionStore
@@ -33,6 +35,13 @@ module Justdi
       end
     end
 
+    # Short getting syntax
+    # @param token [String, Symbol, Numeric, Class]
+    # @return [*]
+    def [](token)
+      get(token)
+    end
+
     # Resolve dependency
     #
     # @param klass [Class<T>]
@@ -43,10 +52,19 @@ module Justdi
 
     # Merge containers
     #
-    # @param container [Container]
+    # @param container [Justdi::Container]
     def merge(container)
       store.merge container.store
     end
+
+    # Import definition store
+    #
+    # @param def_store [Justdi::DefinitionStore]
+    def import_store(def_store)
+      store.merge def_store
+    end
+
+    protected
 
     # Definition store
     # @return [Justdi::DefinitionStore]

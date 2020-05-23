@@ -9,13 +9,13 @@ module Justdi
       # Class for stores generation
       # @return [Class<Hash>]
       def general_store
-        Hash
+        @general_store ||= Hash
       end
 
       # Class for register handlers generation
       # @return [Class<Justdi::RegisterHandler>]
       def register_handler
-        Justdi::RegisterHandler
+        @register_handler ||= Justdi::RegisterHandler
       end
     end
 
