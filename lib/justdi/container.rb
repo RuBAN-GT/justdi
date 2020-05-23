@@ -60,8 +60,13 @@ module Justdi
     # Import definition store
     #
     # @param def_store [Justdi::DefinitionStore]
-    def import_store(def_store)
-      store.merge def_store
+    # @param overwrite [Boolean]
+    def import_store(def_store, overwrite: true)
+      return store.merge(def_store) if overwrite
+
+      def_store.each do |key, value|
+        store.set(key, value) unless store.has?(key)
+      end
     end
 
     protected

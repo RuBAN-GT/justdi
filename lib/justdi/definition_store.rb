@@ -87,6 +87,13 @@ module Justdi
       store.clone.freeze
     end
 
+    # Iterates over existing values
+    #
+    # @yield [token, definition]
+    def each
+      store.each { |(key, value)| yield key, value }
+    end
+
     protected
 
     # Definition store
