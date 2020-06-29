@@ -20,7 +20,7 @@ RSpec.describe Justdi::Container do
 
     it 'overwrites previous values' do
       container_a = generate_container.tap do |c|
-        c.register(:a).use_value(42)
+        c.register(:a).use_value(101)
       end
       container_b = generate_container.tap do |c|
         c.register(:a).use_value(static_value)

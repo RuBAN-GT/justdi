@@ -8,7 +8,7 @@ RSpec.describe Justdi::Container do
       container = described_class.new
 
       expect(container).to be_instance_of Justdi::Container
-      expect(container.store.empty?).to be_truthy
+      expect(container.empty?).to be_truthy
     end
   end
 end

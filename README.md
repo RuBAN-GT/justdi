@@ -24,7 +24,7 @@ gem install justdi
 
 ## TODO
 
-* [ ] Container sub-modules
+* [x] Container sub-modules
 * [ ] Doc
 * [ ] Thread-safe structures
 * [ ] Self-definition like Angular providers

@@ -25,7 +25,10 @@ RSpec.describe Justdi::Definition do
     end
 
     it 'uses resolved value if it was already defined' do
-      resolver   = ->(_) { resolved_value }
+      counter  = double
+      resolver = ->(_) { counter.call }
+      expect(counter).to receive(:call).once.and_return(resolved_value)
+
       definition = described_class.new(value: nil)
       value      = definition.resolve(&resolver)
       rand(1..10).times { expect(definition.resolve(&resolver)).to be value }

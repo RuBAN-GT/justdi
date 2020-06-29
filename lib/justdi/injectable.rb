@@ -7,20 +7,20 @@ module Justdi
     #
     # @param token [String, Symbol, Numeric, Class]
     def dependency(token, **opts)
-      module_dependencies.set(token, opts.transform_keys(&:to_sym))
+      module_dependencies[token] = opts.transform_keys(&:to_sym)
     end
 
     # Get all dependencies
     #
     # @return [Hash]
     def dependencies
-      module_dependencies.all
+      module_dependencies.clone.freeze
     end
 
     protected
 
     def module_dependencies
-      @module_dependencies ||= Justdi::Store.new
+      @module_dependencies ||= {}
     end
   end
 end
