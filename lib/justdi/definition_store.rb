@@ -4,8 +4,6 @@ module Justdi
   # Store of entities definitions
   class DefinitionStore
     class << self
-      attr_writer :general_store, :register_handler
-
       # Class for stores generation
       # @return [Class<Hash>]
       def general_store
@@ -17,6 +15,13 @@ module Justdi
       def register_handler
         @register_handler ||= Justdi::RegisterHandler
       end
+
+      protected
+
+      attr_writer :general_store, :register_handler
+
+      alias use_general_store general_store=
+      alias use_register_handler register_handler=
     end
 
     # Register definition declaration
@@ -30,7 +35,7 @@ module Justdi
       self.class.register_handler.new { |value| store[token] = value }
     end
 
-    # Register any dependency declaration with alternative syntax
+    # Register any dependency declaration manually
     #
     # @param token [String, Symbol, Numeric, Class]
     # @param definition [Hash]
