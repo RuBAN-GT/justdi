@@ -57,9 +57,9 @@ module Justdi
 
     # Merge containers
     #
-    # @param container [Justdi::Container]
-    def merge(container)
-      store.merge container.store
+    # @param containers [Array<Justdi::Container>]
+    def merge(*containers)
+      containers.each { |container| store.merge container.store }
     end
 
     # Import definition store

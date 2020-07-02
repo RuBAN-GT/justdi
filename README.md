@@ -2,6 +2,8 @@
 
 Simple DI container
 
+You can find the full documentation at [Wiki section](./wiki/readme.md)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -21,13 +23,6 @@ Or install it yourself as:
 ```bash
 gem install justdi
 ```
-
-## TODO
-
-* [x] Container sub-modules
-* [ ] Doc
-* [ ] Thread-safe structures
-* [ ] Self-definition like Angular providers
 
 ## Usage
 
@@ -71,7 +66,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/justdi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/justdi/blob/master/CODE_OF_CONDUCT.md).
-
 
 ## License
 

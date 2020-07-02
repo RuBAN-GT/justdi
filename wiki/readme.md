@@ -8,7 +8,6 @@
 ## Features
 
 * [Register dependencies](./register-dependencies.md)
-* Resolve dependencies
-* Merge containers
-* Import another store
-* Inject dependencies
+* [Resolve dependencies](./resolve-dependencies.md)
+* [Extend containers](./extend-containers.md)
+* [Inject dependencies](./inject-dependencies.md)

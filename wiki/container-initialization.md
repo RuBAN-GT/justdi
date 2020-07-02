@@ -24,7 +24,9 @@ class CustomContainer < Justdi::Container
   use_store    CustomStore # Should be compatible with Justdi::DefinitionStore
   use_resolver CustomResolver # Should be compatible with Justdi::Resolver
 end
+
+container = CustomContainer.new # Now you can easily create an instance
 ```
 
-Now, for example your `CustomContainer` `get/[]`, methods will forward to `CustomStore`,
+Now, for example your `CustomContainer` `get`/`[]`, methods will forward to `CustomStore`,
 resolving functionality will use `CustomResolver`.
