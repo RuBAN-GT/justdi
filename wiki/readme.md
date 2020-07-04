@@ -11,3 +11,7 @@
 * [Resolve dependencies](./resolve-dependencies.md)
 * [Extend containers](./extend-containers.md)
 * [Inject dependencies](./inject-dependencies.md)
+
+## Another details
+
+All missed information you can check at `spec` section.

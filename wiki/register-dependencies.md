@@ -51,4 +51,4 @@ container.register(:factroy_value).use_factory(->(_) { rand }) # with lambda
 container.register(:factroy_value).use_factory { |_| rand } # with Proc
 ```
 
-Details about resolving logic you can find at [Resolve dependencies](./resolve-dependencies.md) page
+You can find details about resolving logic at [Resolve dependencies](./resolve-dependencies.md) page
