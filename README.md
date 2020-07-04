@@ -31,7 +31,7 @@ gem install justdi
 ```ruby
 container = Justdi::Container.new
 
-container.set(:orm).use_class(CustomOrm)
+container.register(:orm).use_class(CustomOrm)
 container.get(:orm) # => #<CustomOrm:0x0000000000000000>
 ```
 
@@ -65,7 +65,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/justdi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/justdi/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/RuBAN-GT/justdi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/RuBAN-GT/justdi/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -73,4 +73,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Justdi project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/justdi/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Justdi project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/RuBAN-GT/justdi/blob/master/CODE_OF_CONDUCT.md).

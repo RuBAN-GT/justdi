@@ -4,6 +4,7 @@
 require 'justdi/version'
 
 require 'justdi/errors/no_dependency_error'
+require 'justdi/errors/unknown_definition_type_error'
 require 'justdi/errors/unknown_destination_error'
 
 require 'justdi/resolvers/class_resolver'

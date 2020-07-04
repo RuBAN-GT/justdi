@@ -8,13 +8,13 @@ If you want to initialize your basic container, just create
 ```ruby
 container = Justdi::Container.new
 
-container.set(:orm).use_class(CustomOrm)
+container.register(:orm).use_class(CustomOrm)
 container.get(:orm) # => #<CustomOrm:0x0000000000000000>
 ```
 
 ## Custom container
 
-Any container - is a simple wrapper over storage of dependencies (`Justdi::DefinitionStore`) and their resolver (`Justdi::Resolver`).
+Any justdi container - is a simple wrapper over storage of dependencies (`Justdi::DefinitionStore`) and their resolver (`Justdi::Resolver`).
 
 If you want to customize default storaging or resolving logic,
 you can inherit your own class from `Justdi::Container` like this:
