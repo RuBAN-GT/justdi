@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    justdi (0.0.3)
+    justdi (0.1.0)
 
 GEM
   remote: https://rubygems.org/
