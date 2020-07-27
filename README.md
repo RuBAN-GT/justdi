@@ -1,5 +1,9 @@
 # Justdi
 
+![Gem](https://img.shields.io/gem/v/justdi)
+[![GitHub tag](https://img.shields.io/github/tag/RuBAN-GT/justdi.svg)](https://GitHub.com/RuBAN-GT/justdi/tags/)
+![Build status](https://github.com/RuBAN-GT/justdi/workflows/Ruby/badge.svg)
+
 Simple DI container
 
 You can find the full documentation at [Wiki section](./wiki/readme.md)
