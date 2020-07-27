@@ -10,8 +10,6 @@ module Justdi
     def_delegators :store, :register, :has?, :empty?, :set, :[]=
 
     class << self
-      attr_writer :resolver, :store
-
       # Resolver module
       # @return [Module<Justdi::Resolver>]
       def resolver
@@ -23,6 +21,13 @@ module Justdi
       def store
         @store ||= Justdi::DefinitionStore
       end
+
+      protected
+
+      attr_writer :resolver, :store
+
+      alias use_resolver resolver=
+      alias use_store store=
     end
 
     # Load and resolve dependency
@@ -52,9 +57,9 @@ module Justdi
 
     # Merge containers
     #
-    # @param container [Justdi::Container]
-    def merge(container)
-      store.merge container.store
+    # @param containers [Array<Justdi::Container>]
+    def merge(*containers)
+      containers.each { |container| store.merge container.store }
     end
 
     # Import definition store

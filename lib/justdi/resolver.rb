@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Justdi
+  # Wrapper over typed definition resolvers
   module Resolver
     class << self
       # Resolve definition using container
@@ -8,8 +9,15 @@ module Justdi
       # @param definition [Justdi::Definition]
       # @param container [Justdi::Container]
       # @return [*]
+      #
+      # @raise [Justdi::UnknownDefinitionTypeError]
       def call(definition, container)
-        send "#{definition.type}_value", definition.pure_value, container
+        resolver_method = "#{definition.type}_value"
+        unless respond_to? resolver_method
+          raise Justdi::UnknownDefinitionTypeError, definition
+        end
+
+        send resolver_method, definition.pure_value, container
       end
 
       # Resolve class using container
